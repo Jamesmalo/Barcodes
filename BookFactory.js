@@ -5,11 +5,11 @@ const BookFactory = function (){
 
     function createBook(pubYear){
         //create this function
-        if(pubYear > 2007){
-          const new EAN = function();
+        if(pubYear >= 2007){
+          return new EAN();
         }
         else{
-          const new ISBN = function();
+          return new ISBN();
         }
     }
 
