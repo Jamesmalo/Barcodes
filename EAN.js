@@ -5,6 +5,7 @@ const EAN = function(){
     let sysCode = makeSysCode();//3 digits
     let manCode = Random().digit(5);//5 digits
     let proCode = Random().digit(4);//4 digits
+    let code = sysCode+manCode+proCode;
     let checkDigit = check();
 
 
@@ -49,7 +50,7 @@ const EAN = function(){
                 sum += 3*code[c];
             }
         }
-        console.log("the sum is ="+sum);
+        console.log("the sum is = "+sum);
         let remainder = sum %10;
         if(remainder == 0){
             return 0;

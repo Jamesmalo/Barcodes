@@ -3,10 +3,10 @@ const EAN = require("./EAN.js");
 
 function IsbnEanAdapter(isbnOBJ){
     //create function here
-      let temp = isbnOBJ.read().substring(0,4);
+      let temp = isbnOBJ.read().substring(0,9);
       let code = "978"+temp;
-      let checkDigit = check()
-    check(){
+
+function check(){
         let sum = 0;
         for(let c=0;c<12;c++){
             if(c%2 ==0){
@@ -16,12 +16,27 @@ function IsbnEanAdapter(isbnOBJ){
                 sum += 3*code[c];
             }
         }
-        console.log("the sum is ="+sum);
+        console.log("the sum is = "+sum);
         let remainder = sum %10;
         if(remainder == 0){
             return 0;
         }
         return 10-remainder;
       }
-    let code = code+checkDigit;
+
+      let checkDigit = check();
+
+      function read(){
+          return code+"-"+checkDigit;
+      }
+      return{code, check, read};
 }
+function test(){
+  let book = new ISBN();
+  let ean = new IsbnEanAdapter(book);
+
+  console.log(ean.code);
+  console.log(ean.read());
+}
+
+test()
