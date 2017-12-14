@@ -16,7 +16,8 @@ const BookFactory = function (){
     return {createBook};
 }
 
-//module.exports = BookFactory;
+module.exports = BookFactory;
+
 function test(){
   let factory = new BookFactory();
   let bf1 = factory.createBook(2007);
@@ -26,4 +27,4 @@ function test(){
   console.log(bf2.read());
 }
 
-test()
+//test()
