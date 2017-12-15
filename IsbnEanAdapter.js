@@ -3,7 +3,7 @@ const EAN = require("./EAN.js");
 
 function IsbnEanAdapter(isbnOBJ){
     //create function here
-      let temp = isbnOBJ.read().substring(0,9);
+      let temp = isbnOBJ.code;
       let code = "978"+temp;
 
 function check(){
@@ -29,14 +29,16 @@ function check(){
       function read(){
           return code+"-"+checkDigit;
       }
-      return{code, check, read};
+      return{code, checkDigit, read};
 }
 function test(){
   let book = new ISBN();
   let ean = new IsbnEanAdapter(book);
 
+  console.log(book.code);
+  console.log(book.read());
   console.log(ean.code);
   console.log(ean.read());
 }
-
-test()
+module.exports = IsbnEanAdapter;
+//test()

@@ -33,5 +33,5 @@ function test(){
     console.log(b.checkDigit);
     console.log(b.read());
 }
-//test();
+test();
 module.exports = ISBN;
